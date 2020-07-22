@@ -62,5 +62,13 @@ namespace PlacesYouveBeen.Tests
       Place newPlace3 = new Place("Boise");
       Assert.AreEqual(newPlace1, Place.Find(1));
     }
+
+    [TestMethod]
+    public void EditPlace_ChangeTheValueOfAPlace_NewCityName()
+    {
+      Place newPlace = new Place("Portland");
+      Place.EditPlace(1, "Vancouver");
+      Assert.AreEqual("Vancouver", newPlace.CityName);
+    }
   }
 }
