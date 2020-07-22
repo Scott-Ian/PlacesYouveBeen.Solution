@@ -29,5 +29,11 @@ namespace PlacesYouveBeen.Models
     {
       return _allPlaces[searchId -1];
     }
+
+    public static void EditPlace(int id, string newCityName)
+    {
+      Place editPlace = Find(id);
+      editPlace.CityName = newCityName;
+    }
   }
 }
