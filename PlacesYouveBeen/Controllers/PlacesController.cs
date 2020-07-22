@@ -39,5 +39,11 @@ namespace PlacesYouveBeen.Controllers
         return RedirectToAction("Index");
       }
     }
+
+    [HttpGet("/place/{ID}/edit")]
+    public ActionResult Edit(int ID)
+    {
+      return View(Place.Find(ID));
+    }
   }
 }
