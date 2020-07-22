@@ -53,5 +53,14 @@ namespace PlacesYouveBeen.Tests
       Place newPlace = new Place("Portland");
       Assert.AreEqual(1, newPlace.ID);
     }
+
+    [TestMethod]
+    public void FindId_FindObjectUsingUniqueId_Obj()
+    {
+      Place newPlace1 = new Place("Portland");
+      Place newPlace2 = new Place("Seattle");
+      Place newPlace3 = new Place("Boise");
+      Assert.AreEqual(newPlace1, Place.Find(1));
+    }
   }
 }

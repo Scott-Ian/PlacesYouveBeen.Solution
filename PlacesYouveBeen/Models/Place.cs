@@ -11,7 +11,7 @@ namespace PlacesYouveBeen.Models
     public Place(string cityName = "")
     {
       CityName = cityName;
-      ID = Place.GetAll().Count+1;
+      ID = Place.GetAll().Count + 1;
       _allPlaces.Add(this);
     }
 
