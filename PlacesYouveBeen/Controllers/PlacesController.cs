@@ -45,5 +45,13 @@ namespace PlacesYouveBeen.Controllers
     {
       return View(Place.Find(ID));
     }
+
+    [HttpPost("/place/{ID}")]
+    public ActionResult Update(string ID, string location)
+    {
+      int intID = int.Parse(ID);
+      Place.EditPlace(intID, location);
+      return RedirectToAction("Index");
+    }
   }
 }
