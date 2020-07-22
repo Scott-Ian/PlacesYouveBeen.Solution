@@ -53,5 +53,12 @@ namespace PlacesYouveBeen.Controllers
       Place.EditPlace(intID, location);
       return RedirectToAction("Index");
     }
+
+    [HttpPost("/place/{ID}/destroy")]
+    public ActionResult Destroy(int ID)
+    {
+      Place.Remove(ID);
+      return RedirectToAction("Index");
+    }
   }
 }
