@@ -12,10 +12,10 @@ _Long description._
 | | Spec | Input | Output | isComplete |
 | :-------------     | :-------------     | :------------- | :------------- |:------------- |
 |1.|The program can instantiate a Place object of type Place | N/A | N/A | _True_|
-
-|2.|Place objects have a cityName parameter which can be retrieved | N/A  | N/A |_False_|
+|2.|Place objects have a cityName parameter which can be retrieved | N/A  | N/A |_True_|
 
 |3.|The program can display a list of all Place objects |N/A | N/A |_False_|
+
 |4.|The program will assign a unique id to each Place object |N/A |N/A|_False_ |
 |5.|The program will be able to find a place object via a matching unique Id |N/A|N/A|_False_ |
 |6.|The program will be able to edit a Place objects values |update location: Tokyo |Location: Tokyo|_False_ |

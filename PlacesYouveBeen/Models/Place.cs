@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace PlacesYouveBeen.Models
 {
   public class Place
@@ -7,6 +9,11 @@ namespace PlacesYouveBeen.Models
     public Place(string cityName = "")
     {
       CityName = cityName;
+    }
+
+    public static void GetAll()
+    {
+
     }
   }
 }
