@@ -19,13 +19,6 @@ _Long description._
 |6.|The program will be able to edit a Place objects values |update location: Tokyo |Location: Tokyo|_True_ |
 |7.|The program will be able to delete a Place object from the list of all place objects |Delete Entry|Entry Deleted |_True_ |
 
-|8.|  |  |  |_False_ |
-
-|9.|  |  |  |_False_ |
-|10.|  |  |  |_False_ |
-|11.|  |  |  |_False_ |
-|12.|  |  |  |_False_ |
-
 ## Setup/Installation Requirements
 
 1. This program utilizes .NET version 3.1, and requires this framework to be pre-installed:
@@ -41,11 +34,11 @@ _Long description._
 
 ## Known Bugs
 
-_ _
+_There are no nown bugs_
 
 ## Support and contact details
 
-_Contact me at...._
+_If you would like to contact the authors regarding this project, please contact us via our gitHub profiles_
 
 ## Technologies Used
 
