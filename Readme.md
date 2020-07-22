@@ -1,8 +1,8 @@
-# _PROJECT NAME_
+# _Places You've Been_
 
-#### _SHORT DESCRIPTION_
+#### _A Travel Diary Application_
 
-#### By _**Ian Scott**_
+#### By _**Ian Scott, Megan Hepner, Micheal Hansen**_
 
 ## Description
 
@@ -45,4 +45,4 @@ _Contact me at...._
 
 _This software is licensed under the MIT license_
 
-Copyright (c) 2020 **Ian Scott**.
+Copyright (c) 2020 **Ian Scott, Megan Hepner, Michael Hansen**.
