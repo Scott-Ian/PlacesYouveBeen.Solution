@@ -29,7 +29,14 @@ namespace PlacesYouveBeen.Models
 
     public static Place Find(int searchId)
     {
-      return _allPlaces[searchId - 1];
+      for (int i = 0; i < _allPlaces.Count; i++)
+      {
+        if (_allPlaces[i].ID == searchId)
+        {
+          return _allPlaces[i];
+        }
+      }
+      return null;
     }
 
     public static void EditPlace(int id, string newCityName)
