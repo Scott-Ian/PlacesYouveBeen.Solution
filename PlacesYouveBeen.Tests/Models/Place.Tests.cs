@@ -5,7 +5,7 @@ using System.Collections.Generic;
 namespace PlacesYouveBeen.Tests
 {
   [TestClass]
-  public class PlaceTests : IDisposable
+  public class PlaceTest : IDisposable
   {
 
     // public void Dispose()

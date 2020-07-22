@@ -18,5 +18,10 @@ namespace PlacesYouveBeen.Models
     {
       return _allPlaces;
     }
+
+    public static void DeleteAll()
+    {
+      _allPlaces.Clear();
+    }
   }
 }
