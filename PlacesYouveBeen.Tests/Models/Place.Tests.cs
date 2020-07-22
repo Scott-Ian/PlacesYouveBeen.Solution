@@ -5,8 +5,14 @@ using System.Collections.Generic;
 namespace PlacesYouveBeen.Tests
 {
   [TestClass]
-  public class PlaceTests
+  public class PlaceTests : IDisposable
   {
+
+    // public void Dispose()
+    // {
+    //   // Method to delete all instances of Place in _allPlaces
+    // }
+    
     [TestMethod]
     public void PlaceConstructor_CreatesInstanceOfPlace_Place()
     {
@@ -19,6 +25,15 @@ namespace PlacesYouveBeen.Tests
     {
       Place newPlace = new Place("Hong Kong");
       Assert.AreEqual("Hong Kong", newPlace.CityName);
+    }
+
+    [TestMethod]
+    public void DeleteAll_EmptyTheListOfPlaces_EmptyList()
+    {
+      Place newPlace = new Place("Timbuktu");
+      Place.DeleteAll();
+      List<Place> _expectedResults = new List<Place>(0);
+      CollectionAssert.AreEqual(_expectedResults, Place.GetAll());
     }
 
     [TestMethod]
