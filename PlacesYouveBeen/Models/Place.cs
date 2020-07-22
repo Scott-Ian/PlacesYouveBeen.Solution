@@ -42,12 +42,19 @@ namespace PlacesYouveBeen.Models
     public static void EditPlace(int id, string newCityName)
     {
       Place editPlace = Find(id);
-      editPlace.CityName = newCityName;
+      if (editPlace != null)
+      {
+        editPlace.CityName = newCityName;
+      }
     }
 
     public static void Remove(int id)
     {
-      Place.GetAll().Remove(Place.Find(id));
+      Place placeToDelete = Find(id);
+      if (placeToDelete != null)
+      {
+        Place.GetAll().Remove(placeToDelete);
+      }
     }
   }
 }

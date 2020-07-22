@@ -110,5 +110,14 @@ namespace PlacesYouveBeen.Tests
       Place newPlace2 = new Place("Seattle");
       Assert.IsNull(Place.Find(5));
     }
+
+    [TestMethod]
+    public void EditPlace_DoesNothingIfNoPlaceFound_Nothing()
+    {
+      Place newPlace1 = new Place("Portland");
+      Place.EditPlace(59, "Seattle");
+      List<Place> _expectedResults = new List<Place> {newPlace1};
+      CollectionAssert.AreEqual(_expectedResults, Place.GetAll());
+    }
   }
 }
