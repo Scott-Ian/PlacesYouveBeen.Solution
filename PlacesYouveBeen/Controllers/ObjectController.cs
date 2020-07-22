@@ -1,10 +1,10 @@
 using Microsoft.AspNetCore.Mvc;
-using ProjectName.Models;
+using PlacesYouveBeen.Models;
 using System.Collections.Generic;
 
-namespace ProjectName.Controllers
+namespace PlacesYouveBeen.Controllers
 {
-  public class ObjectPlural_Controller : Controller
+  public class PlacesController : Controller
   {
     [HttpGet("/items")]
     public ActionResult Index()

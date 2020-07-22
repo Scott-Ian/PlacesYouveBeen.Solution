@@ -1,10 +1,10 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using ProjectName.Models;
+using PlacesYouveBeen.Models;
 
-namespace ProjectName.Tests
+namespace PlacesYouveBeen.Tests
 {
   [TestClass]
-  public class ClassNameTests
+  public class PlaceTests
   {
     // Test methods go here
   }
