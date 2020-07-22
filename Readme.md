@@ -16,9 +16,10 @@ _Long description._
 |3.|The program can display a list of all Place objects |N/A | N/A |_True_|
 |4.|The program will assign a unique id to each Place object |N/A |N/A|_True_ |
 |5.|The program will be able to find a place object via a matching unique Id |N/A|N/A|_True_ |
+|6.|The program will be able to edit a Place objects values |update location: Tokyo |Location: Tokyo|_True_ |
 
-|6.|The program will be able to edit a Place objects values |update location: Tokyo |Location: Tokyo|_False_ |
 |7.|The program will be able to delete a Place object from the list of all place objects |Delete Entry|Entry Deleted |_False_ |
+
 |8.|  |  |  |_False_ |
 
 |9.|  |  |  |_False_ |

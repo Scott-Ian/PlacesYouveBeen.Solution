@@ -27,13 +27,18 @@ namespace PlacesYouveBeen.Models
 
     public static Place Find(int searchId)
     {
-      return _allPlaces[searchId -1];
+      return _allPlaces[searchId - 1];
     }
 
     public static void EditPlace(int id, string newCityName)
     {
       Place editPlace = Find(id);
       editPlace.CityName = newCityName;
+    }
+
+    public static void Remove(int id)
+    {
+      Place.GetAll().Remove(Place.Find(id));
     }
   }
 }

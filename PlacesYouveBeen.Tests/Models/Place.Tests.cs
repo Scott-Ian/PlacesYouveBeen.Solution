@@ -70,5 +70,15 @@ namespace PlacesYouveBeen.Tests
       Place.EditPlace(1, "Vancouver");
       Assert.AreEqual("Vancouver", newPlace.CityName);
     }
+
+    [TestMethod]
+    public void DeletePlace_RemovePlaceObjectFromList_DoesNotContain()
+    {
+      Place newPlace1 = new Place("Portland");
+      Place newPlace2 = new Place("Seattle");
+      Place newPlace3 = new Place("Boise");
+      Place.Remove(2);
+      CollectionAssert.DoesNotContain(Place.GetAll(), newPlace2);
+    }
   }
 }
