@@ -51,7 +51,7 @@ namespace PlacesYouveBeen.Tests
     public void GetId_InstantiatePlaceObjectsWithId_Int()
     {
       Place newPlace = new Place("Portland");
-      Assert.AreEqual(1, newPlace.Id);
+      Assert.AreEqual(1, newPlace.ID);
     }
   }
 }

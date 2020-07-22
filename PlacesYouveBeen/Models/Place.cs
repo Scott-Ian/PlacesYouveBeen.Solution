@@ -5,12 +5,13 @@ namespace PlacesYouveBeen.Models
   public class Place
   {
     public string CityName { get; set; }
-    
-    private static List<Place> _allPlaces = new List<Place> (){};
+    public int ID { get; }
+    private static List<Place> _allPlaces = new List<Place>(0);
 
     public Place(string cityName = "")
     {
       CityName = cityName;
+      ID = Place.GetAll().Count+1;
       _allPlaces.Add(this);
     }
 
