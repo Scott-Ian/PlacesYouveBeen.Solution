@@ -80,5 +80,15 @@ namespace PlacesYouveBeen.Tests
       Place.Remove(2);
       CollectionAssert.DoesNotContain(Place.GetAll(), newPlace2);
     }
+
+    [TestMethod]
+    public void GetID_IDsShouldAlwaysBeUnique_NotEqual()
+    {
+      Place newPlace1 = new Place("Portland");
+      Place newPlace2 =  new Place("Seattle");
+      Place.Remove(1);
+      Place newPlace3 = new Place("Boise");
+      Assert.AreNotEqual(newPlace2.ID, newPlace3.ID);
+    }
   }
 }
