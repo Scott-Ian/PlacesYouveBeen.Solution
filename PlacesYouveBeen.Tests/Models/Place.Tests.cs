@@ -119,5 +119,14 @@ namespace PlacesYouveBeen.Tests
       List<Place> _expectedResults = new List<Place> {newPlace1};
       CollectionAssert.AreEqual(_expectedResults, Place.GetAll());
     }
+
+    [TestMethod]
+    public void Remove_DoesNothingIfNotFound_Nothing()
+    {
+      Place newPlace = new Place("Portland");
+      Place.Remove(5);
+      List<Place> _expectedResults = new List<Place> {newPlace};
+      CollectionAssert.AreEqual(_expectedResults, Place.GetAll());
+    }
   }
 }
