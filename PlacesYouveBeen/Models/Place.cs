@@ -7,11 +7,13 @@ namespace PlacesYouveBeen.Models
     public string CityName { get; set; }
     public int ID { get; }
     private static List<Place> _allPlaces = new List<Place>(0);
+    public static int _nextID = 1;
 
     public Place(string cityName = "")
     {
       CityName = cityName;
-      ID = Place.GetAll().Count + 1;
+      ID = _nextID;
+      _nextID++;
       _allPlaces.Add(this);
     }
 

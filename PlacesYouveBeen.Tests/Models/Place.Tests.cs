@@ -12,6 +12,7 @@ namespace PlacesYouveBeen.Tests
     public void Dispose()
     {
       Place.DeleteAll();
+      Place._nextID = 1;
     }
     
     [TestMethod]
