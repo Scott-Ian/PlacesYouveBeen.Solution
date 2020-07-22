@@ -1,5 +1,6 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PlacesYouveBeen.Models;
+using System;
 using System.Collections.Generic;
 
 namespace PlacesYouveBeen.Tests
@@ -8,10 +9,10 @@ namespace PlacesYouveBeen.Tests
   public class PlaceTest : IDisposable
   {
 
-    // public void Dispose()
-    // {
-    //   // Method to delete all instances of Place in _allPlaces
-    // }
+    public void Dispose()
+    {
+      Place.DeleteAll();
+    }
     
     [TestMethod]
     public void PlaceConstructor_CreatesInstanceOfPlace_Place()
@@ -44,6 +45,13 @@ namespace PlacesYouveBeen.Tests
       Place newPlace3 = new Place("St Petersburg");
       List<Place> _expectedResults = new List<Place> {newPlace1, newPlace2, newPlace3};
       CollectionAssert.AreEqual(_expectedResults, Place.GetAll());
+    }
+
+    [TestMethod]
+    public void GetId_InstantiatePlaceObjectsWithId_Int()
+    {
+      Place newPlace = new Place("Portland");
+      Assert.AreEqual(1, newPlace.Id);
     }
   }
 }
