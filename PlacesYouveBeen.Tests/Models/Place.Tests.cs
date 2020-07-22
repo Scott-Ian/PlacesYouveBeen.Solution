@@ -102,5 +102,13 @@ namespace PlacesYouveBeen.Tests
       Place findPlace = Place.Find(3);
       Assert.AreEqual(findPlace, newPlace3);
     }
+
+    [TestMethod]
+    public void FindID_ReturnsNullIfSearchigANonExistant_Null()
+    {
+      Place newPlace1 = new Place("Portland");
+      Place newPlace2 = new Place("Seattle");
+      Assert.IsNull(Place.Find(5));
+    }
   }
 }
