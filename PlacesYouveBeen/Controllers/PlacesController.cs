@@ -12,5 +12,11 @@ namespace PlacesYouveBeen.Controllers
       List<Place> placeList = Place.GetAll();
       return View(placeList);
     }
+
+    [HttpGet("/place/new")]
+    public ActionResult New()
+    {
+      return View();
+    }
   }
 }
