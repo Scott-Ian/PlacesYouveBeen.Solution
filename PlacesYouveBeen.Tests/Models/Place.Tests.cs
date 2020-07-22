@@ -91,5 +91,16 @@ namespace PlacesYouveBeen.Tests
       Place newPlace3 = new Place("Boise");
       Assert.AreNotEqual(newPlace2.ID, newPlace3.ID);
     }
+
+    [TestMethod]
+    public void FindID_StillFindsCorrectObjectAfterDeletion_ObjMatch()
+    {
+      Place newPlace1 = new Place("Portland");
+      Place newPlace2 =  new Place("Seattle");
+      Place.Remove(1);
+      Place newPlace3 = new Place("Boise");
+      Place findPlace = Place.Find(3);
+      Assert.AreEqual(findPlace, newPlace3);
+    }
   }
 }
