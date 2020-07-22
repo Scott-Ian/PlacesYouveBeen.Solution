@@ -22,7 +22,7 @@ namespace PlacesYouveBeen.Tests
       Assert.AreEqual(typeof(Place), newPlace.GetType());
     }
 
-    [TestMethod]
+    [TPestMethod]
     public void PlaceConstructor_CityNameParamater_Added()
     {
       Place newPlace = new Place("Hong Kong");

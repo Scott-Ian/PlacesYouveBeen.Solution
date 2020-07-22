@@ -18,5 +18,12 @@ namespace PlacesYouveBeen.Controllers
     {
       return View();
     }
+
+    [HttpPost("/place")]
+    public ActionResult Create(string location)
+    {
+      Place newPlace = new Place(location);
+      return RedirectToAction("Index");
+    }
   }
 }
