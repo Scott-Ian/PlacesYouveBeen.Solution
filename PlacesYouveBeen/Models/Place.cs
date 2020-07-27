@@ -46,8 +46,8 @@ namespace PlacesYouveBeen.Models
       cmd.CommandText = @"INSERT INTO places (CityName, Description) VALUES (@PlacesCityName, @PlacesDescription);";
       MySqlParameter cityName = new MySqlParameter();
       MySqlParameter description = new MySqlParameter();
-      cityName.ParameterName = "@CityName";
-      description.ParameterName = "@Description";
+      cityName.ParameterName = "@PlacesCityName";
+      description.ParameterName = "@PlacesDescription";
       cityName.Value = this.CityName;
       description.Value = this.Description;
       cmd.Parameters.Add(cityName);
