@@ -65,12 +65,14 @@ namespace PlacesYouveBeen.Tests
       CollectionAssert.AreEqual(_expectedResults, Place.GetAll());
     }
 
-    // [TestMethod]
-    // public void GetId_InstantiatePlaceObjectsWithId_Int()
-    // {
-    //   Place newPlace = new Place("Portland");
-    //   Assert.AreEqual(1, newPlace.Id);
-    // }
+    [TestMethod]
+    public void GetId_InstantiatePlaceObjectsWithId_Int()
+    {
+      Place newPlace = new Place("Portland", "Rainy City");
+      newPlace.Save();
+      int Id = newPlace.Id;
+      Assert.AreEqual(Id, newPlace.Id);
+    }
 
     // [TestMethod]
     // public void FindId_FindObjectUsingUniqueId_Obj()
