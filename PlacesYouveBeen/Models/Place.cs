@@ -87,9 +87,17 @@ namespace PlacesYouveBeen.Models
       return allPlaces;
     }
 
-    public static void DeleteAll()
+    public static void ClearAll()
     {
-      _allPlaces.Clear();
+      MySqlConnection conn = DB.Connection();
+      conn.Open();
+      MySqlCommand cmd = conn.CreateCommand() as MySqlCommand;
+      cmd.CommandText = @"DELETE FROM items;";
+      conn.Close();
+      if (conn != null)
+      {
+        conn.Dispose();
+      }
     }
 
     public static Place Find(int searchId)
