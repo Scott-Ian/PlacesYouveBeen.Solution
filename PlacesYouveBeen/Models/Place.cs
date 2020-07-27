@@ -1,20 +1,66 @@
 using System.Collections.Generic;
+using MySql.Data.MySqlClient;
 
 namespace PlacesYouveBeen.Models
 {
   public class Place
   {
     public string CityName { get; set; }
-    public int ID { get; }
-    private static List<Place> _allPlaces = new List<Place>(0);
-    public static int _nextID = 1;
+    public string Description { get; set; }
+    public int Id { get; set;}
 
-    public Place(string cityName = "")
+    public Place (string cityName = "", string description = "")
     {
       CityName = cityName;
-      ID = _nextID;
-      _nextID++;
-      _allPlaces.Add(this);
+      Description = description;
+    }
+
+    public Place(string cityName, string description, int id)
+    {
+      CityName = cityName;
+      Description = description;
+      Id = id;
+    }
+
+    public override bool Equals(System.Object otherPlace)
+    {
+      if(!(otherPlace is Place))
+      {
+        return false;
+      }
+      else
+      {
+        Place newPlace = (Place) otherPlace;
+        bool idEquality = (this.Id == newPlace.Id);
+        bool cityNameEquality = (this.CityName == newPlace.CityName);
+        return (idEquality && cityNameEquality);
+      }
+    }
+
+    public void Save()
+    {
+      MySqlConnection conn = DB.Connection();
+      conn.Open();
+      
+      var cmd = conn.CreateCommand() as MySqlCommand;
+      cmd.CommandText = @"INSERT INTO places (CityName, Description) VALUES (@PlacesCityName, @PlacesDescription);";
+      MySqlParameter cityName = new MySqlParameter();
+      MySqlParameter description = new MySqlParameter();
+      cityName.ParameterName = "@CityName";
+      description.ParameterName = "@Description";
+      cityName.Value = this.CityName;
+      description.Value = this.Description;
+      cmd.Parameters.Add(cityName);
+      cmd.Parameters.Add(description);
+      cmd.ExecuteNonQuery();
+
+      Id = (int) cmd.LastInsertedId;
+
+      conn.Close();
+      if (conn != null)
+      {
+        conn.Dispose();
+      }
     }
 
     public static List<Place> GetAll()
