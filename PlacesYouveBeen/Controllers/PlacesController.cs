@@ -20,9 +20,10 @@ namespace PlacesYouveBeen.Controllers
     }
 
     [HttpPost("/place")]
-    public ActionResult Create(string location)
+    public ActionResult Create(string location, string description)
     {
-      Place newPlace = new Place(location);
+      Place newPlace = new Place(location, description);
+      newPlace.Save();
       return RedirectToAction("Index");
     }
 
@@ -47,10 +48,10 @@ namespace PlacesYouveBeen.Controllers
     }
 
     [HttpPost("/place/{ID}")]
-    public ActionResult Update(string ID, string location)
+    public ActionResult Update(string ID, string location, string description)
     {
       int intID = int.Parse(ID);
-      Place.EditPlace(intID, location);
+      Place.EditPlace(intID, location, description);
       return RedirectToAction("Index");
     }
 
