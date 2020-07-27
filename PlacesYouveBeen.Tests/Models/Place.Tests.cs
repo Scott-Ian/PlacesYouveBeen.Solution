@@ -17,7 +17,7 @@ namespace PlacesYouveBeen.Tests
 
     public void PlaceTest()
     {
-      DBConfiguration.ConnectionString = "server=localhost; user id=root;password=epicodus;port=3306;database=places_youve_been_tests;";
+      DBConfiguration.ConnectionString = "server=localhost; user id=root;password=epicodus;port=3306;database=places_youve_been_test;";
     }
     
     [TestMethod]
@@ -41,14 +41,16 @@ namespace PlacesYouveBeen.Tests
       Assert.AreEqual("Revolution of our time!", newPlace.Description);
     }
 
-    // [TestMethod]
-    // public void DeleteAll_EmptyTheListOfPlaces_EmptyList()
-    // {
-    //   Place newPlace = new Place("Timbuktu");
-    //   Place.DeleteAll();
-    //   List<Place> _expectedResults = new List<Place>(0);
-    //   CollectionAssert.AreEqual(_expectedResults, Place.GetAll());
-    // }
+    [TestMethod]
+    public void DeleteAll_EmptyTheListOfPlaces_EmptyList()
+    {
+      Place newPlace = new Place("Timbuktu", "Great Food!");
+      newPlace.Save();
+      Place.ClearAll();
+      List<Place> expectedResults = new List<Place>{};
+      List<Place> databaseContents = Place.GetAll();
+      CollectionAssert.AreEqual(expectedResults, databaseContents);
+    }
 
     [TestMethod]
     public void GetAll_ShowsListOfAllPlaceObjects_ListMatches()
@@ -67,7 +69,7 @@ namespace PlacesYouveBeen.Tests
     // public void GetId_InstantiatePlaceObjectsWithId_Int()
     // {
     //   Place newPlace = new Place("Portland");
-    //   Assert.AreEqual(1, newPlace.ID);
+    //   Assert.AreEqual(1, newPlace.Id);
     // }
 
     // [TestMethod]
