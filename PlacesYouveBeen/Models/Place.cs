@@ -112,7 +112,7 @@ namespace PlacesYouveBeen.Models
       cmd.CommandText = @"SELECT * FROM places WHERE id = @this.Id;";
 
       MySqlParameter thisId = new MySqlParameter();
-      thisId.ParameterName = "@thisId";
+      thisId.ParameterName = "@this.Id";
       thisId.Value = searchId;
       cmd.Parameters.Add(thisId);
 

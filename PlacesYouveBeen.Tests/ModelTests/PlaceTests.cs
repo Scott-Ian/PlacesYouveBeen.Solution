@@ -7,7 +7,7 @@ using MySql.Data.MySqlClient;
 namespace PlacesYouveBeen.Tests
 {
   [TestClass]
-  public class PlaceTests : IDisposable
+  public class PlaceTest : IDisposable
   {
 
     public void Dispose()
@@ -15,7 +15,7 @@ namespace PlacesYouveBeen.Tests
       Place.ClearAll();
     }
 
-    public void PlaceTest()
+    public PlaceTest()
     {
       DBConfiguration.ConnectionString = "server=localhost; user id=root;password=epicodus;port=3306;database=places_youve_been_test;";
     }
@@ -74,14 +74,19 @@ namespace PlacesYouveBeen.Tests
       Assert.AreEqual(Id, newPlace.Id);
     }
 
-    // [TestMethod]
-    // public void FindId_FindObjectUsingUniqueId_Obj()
-    // {
-    //   Place newPlace1 = new Place("Portland");
-    //   Place newPlace2 = new Place("Seattle");
-    //   Place newPlace3 = new Place("Boise");
-    //   Assert.AreEqual(newPlace1, Place.Find(1));
-    // }
+    [TestMethod]
+    public void Find_ReturnsCorrectPlace_Place()
+    {
+      Place newPlace1 = new Place("Portland", "Rainy City");
+      newPlace1.Save();
+      int Id1 = newPlace1.Id;
+      Place newPlace2 = new Place("Seattle", "Another Rainy City");
+      newPlace2.Save();
+      Place newPlace3 = new Place("Boise", "Mildy Rainy");
+      newPlace3.Save();
+
+      Assert.AreEqual(newPlace1, Place.Find(Id1));
+    }
 
     // [TestMethod]
     // public void EditPlace_ChangeTheValueOfAPlace_NewCityName()
