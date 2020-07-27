@@ -110,8 +110,9 @@ namespace PlacesYouveBeen.Models
       cmd.CommandText = @"SELECT * FROM places WHERE id = @this.Id;";
 
       MySqlParameter thisId = new MySqlParameter();
-      thisId.ParameterName = @"thisId";
+      thisId.ParameterName = "@thisId";
       thisId.Value = searchId;
+      cmd.Parameters.Add(thisId);
 
       MySqlDataReader rdr = cmd.ExecuteReader() as MySqlDataReader;
       int placeId = 0;
@@ -133,16 +134,34 @@ namespace PlacesYouveBeen.Models
       return foundPlace;
     }
 
-// Update places SET column = value WHERE Id = X;
-    public static void EditPlace(int id, string newCityName)
+// Update places SET column = value, column = value WHERE Id = X;
+    public static void EditPlace(int searchId, string newCityName, string newDescription)
     {
       MySqlConnection conn = DB.Connection();
       conn.Open();
+      var cmd = conn.CreateCommand() as MySqlCommand;
+      cmd.CommandText = @"UPDATE places SET CityName = @newCityName, Description = @newDescription WHERE Id = @this.id";
       
-      Place editPlace = Find(id);
-      if (editPlace != null)
+      MySqlParameter thisId = new MySqlParameter();
+      thisId.ParameterName = "@thisId";
+      thisId.Value = searchId;
+      cmd.Parameters.Add(thisId);
+
+      MySqlParameter thisDescription = new MySqlParameter();
+      thisDescription.ParameterName = "@newDescription";
+      thisDescription.Value = newDescription;
+      cmd.Parameters.Add(thisDescription);
+
+      MySqlParameter thisCityName = new MySqlParameter();
+      thisCityName.ParameterName = "@newCityName";
+      thisCityName.Value = newCityName;
+      cmd.Parameters.Add(thisCityName);
+      
+      cmd.ExecuteNonQuery();
+      conn.Close();
+      if (conn != null)
       {
-        editPlace.CityName = newCityName;
+        conn.Dispose();
       }
     }
 
