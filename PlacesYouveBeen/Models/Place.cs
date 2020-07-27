@@ -65,7 +65,26 @@ namespace PlacesYouveBeen.Models
 
     public static List<Place> GetAll()
     {
-      return _allPlaces;
+      List<Place> allPlaces = new List<Place>{};
+      MySqlConnection conn = DB.Connection();
+      conn.Open();
+      MySqlCommand cmd = conn.CreateCommand() as MySqlCommand;
+      cmd.CommandText = @"SELECT * FROM places;";
+      MySqlDataReader rdr = cmd.ExecuteReader() as MySqlDataReader;
+      while (rdr.Read())
+      {
+        string placeCityName = rdr.GetString(1);
+        string placeDescription = rdr.GetString(2);
+        int placeId = rdr.GetInt32(0);
+        Place newPlace = new Place (placeCityName, placeDescription, placeId);
+        allPlaces.Add(newPlace);
+      }
+      conn.Close();
+      if (conn != null)
+      {
+        conn.Dispose();
+      }
+      return allPlaces;
     }
 
     public static void DeleteAll()
