@@ -145,7 +145,7 @@ namespace PlacesYouveBeen.Models
       cmd.CommandText = @"UPDATE places SET CityName = @newCityName, Description = @newDescription WHERE Id = @this.id";
       
       MySqlParameter thisId = new MySqlParameter();
-      thisId.ParameterName = "@thisId";
+      thisId.ParameterName = "@this.Id";
       thisId.Value = searchId;
       cmd.Parameters.Add(thisId);
 

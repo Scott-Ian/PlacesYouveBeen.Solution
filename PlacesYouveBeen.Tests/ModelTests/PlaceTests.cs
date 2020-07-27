@@ -88,13 +88,17 @@ namespace PlacesYouveBeen.Tests
       Assert.AreEqual(newPlace1, Place.Find(Id1));
     }
 
-    // [TestMethod]
-    // public void EditPlace_ChangeTheValueOfAPlace_NewCityName()
-    // {
-    //   Place newPlace = new Place("Portland");
-    //   Place.EditPlace(1, "Vancouver");
-    //   Assert.AreEqual("Vancouver", newPlace.CityName);
-    // }
+    [TestMethod]
+    public void EditPlace_ChangeTheValueOfAPlace_NewCityName()
+    {
+      Place newPlace = new Place("Portland", "Rainy Sity");
+      newPlace.Save();
+      int id = newPlace.Id;
+
+      Place.EditPlace(id, "Vancouver", "Rainy City");
+      newPlace = Place.Find(id);
+      Assert.AreEqual("Vancouver", newPlace.CityName);
+    }
 
     // [TestMethod]
     // public void DeletePlace_RemovePlaceObjectFromList_DoesNotContain()
