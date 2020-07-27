@@ -167,10 +167,21 @@ namespace PlacesYouveBeen.Models
 
     public static void Remove(int id)
     {
-      Place placeToDelete = Find(id);
-      if (placeToDelete != null)
+      MySqlConnection conn = DB.Connection();
+      conn.Open();
+      var cmd = conn.CreateCommand() as MySqlCommand;
+      cmd.CommandText = @"DELETE FROM places WHERE Id = @this.id";
+
+      MySqlParameter thisId = new MySqlParameter();
+      thisId.ParameterName = "@thisId";
+      thisId.Value = id;
+      cmd.Parameters.Add(thisId);
+
+      cmd.ExecuteNonQuery();
+      conn.Close();
+      if (conn != null)
       {
-        Place.GetAll().Remove(placeToDelete);
+        conn.Dispose();
       }
     }
   }
