@@ -102,18 +102,43 @@ namespace PlacesYouveBeen.Models
 
     public static Place Find(int searchId)
     {
-      for (int i = 0; i < _allPlaces.Count; i++)
+      MySqlConnection conn = DB.Connection();
+      conn.Open();
+
+      // should be var cmd?
+      MySqlCommand cmd = conn.CreateCommand() as MySqlCommand;
+      cmd.CommandText = @"SELECT * FROM places WHERE id = @this.Id;";
+
+      MySqlParameter thisId = new MySqlParameter();
+      thisId.ParameterName = @"thisId";
+      thisId.Value = searchId;
+
+      MySqlDataReader rdr = cmd.ExecuteReader() as MySqlDataReader;
+      int placeId = 0;
+      string placeCityName = "";
+      string placeDescription = "";
+      while (rdr.Read())
       {
-        if (_allPlaces[i].ID == searchId)
-        {
-          return _allPlaces[i];
-        }
+        placeId = rdr.GetInt32(0);
+        placeCityName = rdr.GetString(1);
+        placeDescription = rdr.GetString(2);
       }
-      return null;
+      Place foundPlace = new Place (placeCityName, placeDescription, placeId);
+
+      conn.Close();
+      if(conn != null)
+      {
+        conn.Dispose();
+      }
+      return foundPlace;
     }
 
+// Update places SET column = value WHERE Id = X;
     public static void EditPlace(int id, string newCityName)
     {
+      MySqlConnection conn = DB.Connection();
+      conn.Open();
+      
       Place editPlace = Find(id);
       if (editPlace != null)
       {
